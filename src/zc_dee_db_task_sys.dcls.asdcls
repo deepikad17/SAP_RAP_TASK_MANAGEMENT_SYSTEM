@@ -1,0 +1,6 @@
+@EndUserText.label: 'ZC_DEE_DB_TASK_SYS'
+@MappingRole: true
+define role ZC_DEE_DB_TASK_SYS {
+  grant select on ZC_DEE_DB_TASK_SYS
+  where INHERITING CONDITIONS FROM ENTITY ZR_DEE_DB_TASK_SYS REPLACING { ROOT WITH _BaseEntity };
+}

@@ -1,0 +1,6 @@
+@EndUserText.label: 'ZR_DEE_DB_TASK_SYS'
+@MappingRole: true
+define role ZR_DEE_DB_TASK_SYS {
+  grant select on ZR_DEE_DB_TASK_SYS
+  where TRUE;
+}
