@@ -1,0 +1,11 @@
+@EndUserText: {
+  label: 'Service Definition for ZC_DEE_DB_TASK_SYS'
+}
+@ObjectModel: {
+  leadingEntity: {
+    name: 'ZC_DEE_DB_TASK_SYS'
+  }
+}
+define service ZUI_DEE_DB_TASK_SYS_O4 provider contracts odata_v4_ui {
+  expose ZC_DEE_DB_TASK_SYS;
+}
