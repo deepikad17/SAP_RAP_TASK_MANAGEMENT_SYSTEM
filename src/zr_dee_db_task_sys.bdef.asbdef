@@ -1,0 +1,64 @@
+managed implementation in class ZBP_R_DEE_DB_TASK_SYS unique;
+strict ( 2 );
+with draft;
+extensible;
+define behavior for ZR_DEE_DB_TASK_SYS alias ZrDeeDbTaskSys
+persistent table ZDEE_DB_TASK_SYS
+extensible
+draft table ZDEE_DB_TSK_SS_D
+etag master LocalLastChangedAt
+lock master total etag LastChangedAt
+authorization master( global )
+{
+  field ( mandatory : create )
+   TaskID;
+
+  field ( readonly )
+   CreatedAt,
+   CreatedBy,
+   LastChangedAt,
+   LastChangedBy,
+
+   LocalLastChangedAt;
+
+  field ( readonly : update )
+   TaskID;
+
+field ( readonly : create )
+   Status;
+
+
+
+
+  create;
+  update;
+  delete;
+determination setInitialStatus on modify { create; }
+//determination updateStatus on save { create; update; }
+validation validateDates on save { create; update; }
+
+  draft action Activate optimized;
+  draft action Discard;
+  draft action Edit;
+  draft action Resume;
+  draft determine action Prepare;
+
+  mapping for ZDEE_DB_TASK_SYS corresponding extensible
+  {
+    TaskID = TASK_ID;
+    TaskName = TASK_NAME;
+    Description = DESCRIPTION;
+    EmployeeID = EMP_ID;
+    AssignedTo = ASSIGNED_TO;
+    StartDate = START_DATE;
+    EndDate = END_DATE;
+    Status = STATUS;
+    Priority = PRIORITY;
+    CreatedAt = CREATED_AT;
+    CreatedBy = CREATED_BY;
+    LastChangedAt = LAST_CHANGED_AT;
+    LastChangedBy = LAST_CHANGED_BY;
+    LocalLastChangedAt = LOCAL_LAST_CHANGED_AT;
+  }
+
+}
